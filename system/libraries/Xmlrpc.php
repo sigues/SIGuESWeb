@@ -64,6 +64,8 @@ class CI_Xmlrpc {
 	var $response			= array();  // Response from remote server
 
 	var $xss_clean			= TRUE;
+        
+        private $CI;
 
 	//-------------------------------------
 	//  VALUES THAT MULTIPLE CLASSES NEED
@@ -204,13 +206,23 @@ class CI_Xmlrpc {
 		{
 			// Send Error
 		}
-
-		$this->data = array();
-
-		foreach ($incoming as $key => $value)
+                
+                $this->CI = get_instance();
+                $this->CI->load->library('encrypt');
+                
+                //parent::CI_Log();
+                //$CI =& get_instance();
+                //$CI->load->library('encrypt');
+                //$this->CI->encrypt->encode($value)
+                $this->data = array();
+                $i=0;
+                foreach ($incoming as $key => $value)
 		{
-			$this->data[$key] = $this->values_parsing($value);
+			$this->data[$i] = $this->values_parsing($this->CI->encrypt->encode($value));
+                        $i++;
 		}
+                $this->data[$i] = $this->values_parsing(usuario_core);
+                $this->data[$i+1] = $this->values_parsing(contrasena_core);
 	}
 	// END
 

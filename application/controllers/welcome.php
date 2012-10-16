@@ -12,7 +12,7 @@ class Welcome extends CI_Controller {
 		$this->xmlrpc->server($server_url, 80);
 		$this->xmlrpc->method('Greetings');
 
-		$request = array('bolas',usuario_core,contrasena_core);
+		$request = array('bolas','peludas','cagontoo');
 		$this->xmlrpc->request($request);
 
 		if ( ! $this->xmlrpc->send_request())
