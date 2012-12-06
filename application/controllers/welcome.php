@@ -9,8 +9,8 @@ class Welcome extends CI_Controller {
             $this->load->library('xmlrpc');
 
             $this->xmlrpc->server($server_url, 80);
-            $this->xmlrpc->method('Greetings');
-
+            $this->xmlrpc->method('getUsuarioByUserPass');
+            //$this->xmlrpc->set_debug(TRUE);
             $request = array('bolas','peludas','cagontoo');
             $this->xmlrpc->request($request);
 
@@ -25,7 +25,7 @@ class Welcome extends CI_Controller {
                 echo '</pre>';
             }
 
-
+/*
             $this->xmlrpc->method('getUsuarioByUserPass');
 
             $request = array('test_admin',md5('test_pass'));
@@ -42,8 +42,7 @@ class Welcome extends CI_Controller {
                 echo '</pre>';
             }
 
-
-
+*/
        }
         
 	public function index_xml()
