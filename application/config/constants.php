@@ -45,8 +45,8 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 |
 */
 
-define('usuario_core','siguesweb');
-define('contrasena_core',md5('siguesweb'));
+define('usuario_core','admin');
+define('contrasena_core',md5('admin'));
 
 
 /* End of file constants.php */
