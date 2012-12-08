@@ -197,7 +197,6 @@
 			<div id="content">
 				<!-- PAGE CONTENT -->
 				<div id="page-content">
-                                <?=@var_dump($response)?>
 
 					<!-- feature blocks -->
                                         <?php
@@ -208,11 +207,11 @@
 						<h1><?=$titulo[$x]?></h1>
 						<!-- meta -->
 						<ul class="meta">
-							<li><?=$subtitulo[$x]?></li>
+                                                    <li><?=$subtitulo[$x]?></li>
 						</ul>
 						<!-- ENDS meta -->
 						<div class="the-excerpt">
-<?=$contenido[$x]?>						</div>
+                                                    <?=$contenido[$x]?>						</div>
 <!--						<a href="single.html" class="link-button"><span>Read more</span></a> -->
 					</div>
                                         <?php 

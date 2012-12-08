@@ -4,10 +4,10 @@ class Welcome extends CI_Controller {
 
     function index(){
         $usuario = $this->session->userdata("idempleado");
-        if(isset($_POST["entrar"])){
+        if(isset($_POST["usuario"])&&isset($_POST["contrasena"])){
         //if(!$usuario){
-            $this->usuario = $_POST["usuario"];//"recep@dentista.com";
-            $this->contrasena = $_POST["contrasena"];//"abc123";
+            $this->usuario = $this->input->post("usuario");//"recep@dentista.com";
+            $this->contrasena = $this->input->post("contrasena");;//"abc123";
             $login = $this->login();
             if ($login === TRUE){
                 $data["error"][0] = '';
@@ -17,6 +17,8 @@ class Welcome extends CI_Controller {
             } elseif ($login === FALSE){
                 $data["error"][0] = "Debe introducir su usuario y contraseña correctamente para continuar";
             }
+        }else{
+            echo "no hay submit";
         }
         if($usuario === FALSE){
             $data["titulo"][0]="Inicio de Sesión de Personal";
@@ -25,14 +27,47 @@ class Welcome extends CI_Controller {
             $data['seccion']='personal';
             $this->load->view('main',$data);
         }else{
-            $this->controlPanel();
+            $data["titulo"][0]="Bienvenido";
+            $data["subtitulo"][0]="bienvenido";
+            $data["contenido"][0]="nothing to do here";//$this->load->view('login','',true);
+            $data['seccion']='personal';
+            $this->load->view('main',$data);        
+        }
+    }
+    
+    public function connectWS(){
+        if(!isset($this->xmlrpc->client->path)){
+            $server_url = 'http://localhost/SIGuESCore/index.php/siguescore/';//
+            $this->load->library('xmlrpc');
+            $this->xmlrpc->server($server_url, 80);
         }
     }
 
      public function login(){
         if(isset($this->usuario) && isset($this->contrasena) && $this->usuario != '' && $this->contrasena != ''){
+            $this->connectWS();
+            $this->xmlrpc->method('getUsuarioByUserPass');
+            $this->xmlrpc->set_debug(TRUE);
 
+            $this->xmlrpc->request($request = array($this->usuario,$this->contrasena));
 
+            if ( ! $this->xmlrpc->send_request())
+            {
+                echo $this->xmlrpc->display_error();
+            }
+            else
+            {
+                $response = $this->xmlrpc->display_response();
+            }
+            
+            if (is_array($response)){
+                var_dump($response);
+            }
+
+            $data["response"] = $response;
+            $this->load->view("main",$data);
+
+/*
             $query = $this->db->get_where('empleado',array('correo'=>$this->usuario,'contrasena'=>md5($this->contrasena)),1);
             if(sizeof($query->result())>0){
                 foreach ($query->result() as $row){
@@ -47,7 +82,7 @@ class Welcome extends CI_Controller {
                 return 'error';
             }
 
-
+*/
 
         } else {
             return FALSE;
@@ -65,15 +100,11 @@ class Welcome extends CI_Controller {
         function getUsuarios() {
 
             $time_start = microtime(true);
-            $this->load->helper('url');
-            $server_url = 'http://localhost/SIGuESCore/index.php/siguescore/';//
-
-            $this->load->library('xmlrpc');
-
-            $this->xmlrpc->server($server_url, 80);
+//            $this->load->helper('url');
+            $this->connectWS();
             $this->xmlrpc->method('getUsuarioByUserPass');
 //            $this->xmlrpc->set_debug(TRUE);
-           // $request = array('bolas','peludas','cagontoo');
+
             $this->xmlrpc->request($request = array());
 
             if ( ! $this->xmlrpc->send_request())
