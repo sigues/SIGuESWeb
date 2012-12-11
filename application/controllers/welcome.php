@@ -47,7 +47,7 @@ class Welcome extends CI_Controller {
         if(isset($this->usuario) && isset($this->contrasena) && $this->usuario != '' && $this->contrasena != ''){
             $this->connectWS();
             $this->xmlrpc->method('getUsuarioByUserPass');
-            $this->xmlrpc->set_debug(TRUE);
+            //$this->xmlrpc->set_debug(TRUE);
 
             $this->xmlrpc->request($request = array($this->usuario,$this->contrasena));
 
@@ -65,25 +65,6 @@ class Welcome extends CI_Controller {
             }
 
             $data["response"] = $response;
-            $this->load->view("main",$data);
-
-/*
-            $query = $this->db->get_where('empleado',array('correo'=>$this->usuario,'contrasena'=>md5($this->contrasena)),1);
-            if(sizeof($query->result())>0){
-                foreach ($query->result() as $row){
-                    $userdata = array("idempleado"   => $row->idempleado,
-                                      "correo"      => $row->correo,
-                                      "puesto"      => $row->puesto);
-                    $this->session->set_userdata($userdata);
-                    $this->puesto = $row->puesto;
-                    return TRUE;
-                }
-            } else {
-                return 'error';
-            }
-
-*/
-
         } else {
             return FALSE;
         }
