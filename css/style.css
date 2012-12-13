@@ -469,12 +469,16 @@ h1.header-line,
 
 #contactForm,
 #commentform,
-#contactForm{
+#contactForm,
+.form{
 	margin-bottom: 18px;
 }
 
 #contactForm input,
 #contactForm textarea,
+.form input,
+.form textarea,
+.form select,
 #commentform input,
 #commentform textarea{
 	padding: 10px 15px;
@@ -487,17 +491,22 @@ h1.header-line,
 
 #contactForm input,
 #contactForm textarea,
+.form input,
+.form textarea,
+.form select,
 #commentform input,
 #commentform textarea{
 	width: 282px;
 }
 
 #contactForm textarea,
+.form textarea,
 #commentform textarea{
 	width: 438px;
 }
 
 #contactForm #submit,
+.form #submit,
 #commentform input#submit{
 	width: 76px;
 	margin: 21px 0px;
@@ -505,6 +514,7 @@ h1.header-line,
 }
 
 #contactForm #submit:hover,
+.form #submit:hover,
 #commentform input#submit:hover{
 	background: #f1f1f1;
 	color: #606060;
