@@ -479,6 +479,7 @@ h1.header-line,
 .form input,
 .form textarea,
 .form select,
+.form button,
 #commentform input,
 #commentform textarea{
 	padding: 10px 15px;
@@ -494,6 +495,7 @@ h1.header-line,
 .form input,
 .form textarea,
 .form select,
+.form button,
 #commentform input,
 #commentform textarea{
 	width: 282px;
@@ -866,5 +868,7 @@ h1.header-line,
 	cursor: pointer;
 }
 
-
+.error{
+    color: red;
+}
 

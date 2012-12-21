@@ -12,12 +12,15 @@
 		<link rel="stylesheet" href="<?=base_url()?>skins/paper-blue/style.css" type="text/css" media="screen" />
 
 		<!-- JS -->
-		<script type="text/javascript" src="<?=base_url()?>js/jquery-1.5.1.min.js"></script>
-		<script type="text/javascript" src="<?=base_url()?>js/jqueryui.js"></script>
+		<script type="text/javascript" src="<?=base_url()?>js/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="<?=base_url()?>js/jquery-ui-1.9.2.custom.min.js"></script>
+<link type="text/css" href="<?=base_url()?>css/custom-theme/jquery-ui-1.9.2.custom.css" rel="stylesheet" />
 		<script type="text/javascript" src="<?=base_url()?>js/easing.js"></script>
 		<script type="text/javascript" src="<?=base_url()?>js/jquery.scrollTo-1.4.2-min.js"></script>
 		<script type="text/javascript" src="<?=base_url()?>js/quicksand.js"></script>
 		<script type="text/javascript" src="<?=base_url()?>js/custom.js"></script>
+                <script type="text/javascript" src="<?=base_url()?>js/jquery.validate.min.js"></script>
+
 		<!--[if IE]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -96,88 +99,9 @@
 	<div id="wrapper">
 
 		<!-- SIDEBAR -->
-		<div id="sidebar">
-			<!-- logo -->
-			<a href="index.html"><img src="img/logo.png" alt="Left template" id="logo" /></a>
-
-			<!-- search -->
-			<form  method="get" id="searchform" action="#">
-				<div>
-					<input type="text" value="Search..." name="s" id="s" onfocus="defaultInput(this)" onblur="clearInput(this)" />
-					<input type="submit" id="searchsubmit" value=" " />
-				</div>
-			</form>
-			<!-- ENDS search -->
-
-			<!-- Navigation -->
-			<ul id="nav" class="sf-menu sf-vertical">
-				<li class="current-menu-item"><a href="index.html">HOME</a></li>
-				<li><a href="features.html">FEATURES</a>
-					<ul>
-						<li><a href="features.html">Columns layout</a>
-						<li><a href="features-typography.html">Typography</a>
-						<li><a href="features-icons.html">General icons</a>
-						<li><a href="features-social-icons.html">Social icons</a>
-						<li><a href="features-accordion.html">Accordion boxes</a>
-						<li><a href="features-toggle.html">Toggle boxes</a>
-						<li><a href="features-tabs.html">Tabbed content</a>
-					</ul>
-				</li>
-				<li><a href="skins.html">SKINS</a></li>
-				<li><a href="gallery.html">GALLERY</a>
-					<ul>
-						<li><a href="gallery.html">Image gallery</a>
-							<ul>
-								<li><a href="gallery.html">Two columns layout</a></li>
-								<li><a href="gallery-fourcols.html">Four columns layout</a></li>
-							</ul>
-						</li>
-						<li><a href="gallery-video.html">Video gallery</a></li>
-					</ul>
-				</li>
-				<li><a href="blog.html">BLOG</a>
-					<ul>
-						<li><a href="blog.html">Full blog</a></li>
-						<li><a href="blog-compact.html">Compact blog</a></li>
-					</ul>
-				</li>
-				<li><a href="portfolio.html">PORTFOLIO</a></li>
-				<li><a href="contact.html">CONTACT</a></li>
-				<li><a href="http://luiszuno.com/blog/downloads/left-template">DOWNLOAD NOW!</a></li>
-			</ul>
-			<!-- Navigation -->
-
-			<!-- categories -->
-			<ul class="cat-list">
-				<li><h6>Categories</h6></li>
-				<li><a href="#" title="View posts">Design (11)</a></li>
-				<li><a href="#" title="View all posts">Web (6)</a></li>
-				<li><a href="#" title="View all posts">Photo (3)</a></li>
-				<li><a href="#" title="View all posts">Coding (16)</a></li>
-				<li><a href="#" title="View all posts">Design (41)</a></li>
-				<li><a href="#" title="View all posts">Web (6)</a></li>
-				<li><a href="#" title="View all posts">Photo (5)</a></li>
-				<li><a href="#" title="View all posts">Coding (23)</a></li>
-			</ul>
-			<!-- categories -->
-
-			<!-- latest tweets -->
-			<div class="tweet"><h6>Tweets</h6></div>
-			<!-- ENDS latest tweets -->
-
-			<!-- Social -->
-			<ul class="social">
-				<li><h6>Follow us</h6>
-				<li><a href="http://www.facebook.com" class="facebook" title="Become a fan"></a></li>
-				<li><a href="http://www.twitter.com" class="twitter" title="Follow our tweets"></a></li>
-				<li><a href="http://www.dribbble.com" class="dribbble" title="View our work"></a></li>
-				<li><a href="http://www.addthis.com" class="addthis" title="Tell everybody"></a></li>
-				<li><a href="http://www.vimeo.com" class="vimeo" title="View our videos"></a></li>
-				<li><a href="http://www.youtube.com" class="youtube" title="View our videos"></a></li>
-			</ul>
-			<!-- ENDS Social -->
-
-		</div>
+                <?php
+                    $this->load->view("sidebar");
+                ?>
 		<!-- ENDS SIDEBAR -->
 
 		<!-- MAIN -->
