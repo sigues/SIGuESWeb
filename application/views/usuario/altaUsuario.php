@@ -48,5 +48,5 @@
             <button name="altaUsuario-submit" id="altaUsuario-submit" >Guardar</button>
         </p>
     </fieldset>
-    <p id="error" class="warning" style="display: none;">Message</p>
+    <p name="error" id="error" class="warning" style="display: none;">Message</p>
 </form>

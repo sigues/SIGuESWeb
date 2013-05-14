@@ -11,32 +11,44 @@
                 });*/
             $("#altaUsuario").validate({
             rules: {
-                            nombre: {
-                                    required : true,
-                                    minlength : 3,
-                                    maxlength : 45
-                            },
-                            apellidoPaterno: {
-                                    required : true,
-                                    minlength : 3,
-                                    maxlength : 60
-                            },
-                            apellidoMaterno: {
-                                    required : true,
-                                    minlength : 3,
-                                    maxlength : 60
-                            },
-                            correoElectronico: {
-                                    required : true,
-                                    email : true
-			  	},
-			    fechaNacimiento : {
-			    	required : true,
-			    	date : true
-			    }		  	},
-			  submitHandler: function(form) {
-			  /*	$('#respuesta').html("<center><img src='../../images/loading.gif' /></center>");
-	            var nombre = $("#nombre").val();
+                nombre: {
+                        required : true,
+                        minlength : 3,
+                        maxlength : 45
+                },
+                apellidoPaterno: {
+                        required : true,
+                        minlength : 3,
+                        maxlength : 60
+                },
+                apellidoMaterno: {
+                        required : true,
+                        minlength : 3,
+                        maxlength : 60
+                },
+                correoElectronico: {
+                        required : true,
+                        email : true
+                    },
+                fechaNacimiento : {
+                    required : true,
+                    date : true
+                },
+                perfil : {
+                    required : true
+                },
+                contrasena : {
+                    required : true,
+                    minlength : 5,
+                    maxlength : 15
+                },
+                contrasena2 : {
+                    equalTo: "#contrasena"
+                }
+            },
+              submitHandler: function(form) {
+                    $('#error').html("<center><img src='../../images/loading.gif' /></center>").show();
+/*	            var nombre = $("#nombre").val();
 	            var apellidoPaterno = $("#apellidoPaterno").val();
 	            var apellidoMaterno = $("#apellidoMaterno").val();
 	            var correo = $("#correo").val();
@@ -46,7 +58,7 @@
 	            var fechaNacimiento = $("#fechaNacimiento").val();
                     var tipo = $("#tipo").val();
                     var idpaciente = $("#idpaciente").val();
-
+/*
 	            $.ajax({
 	              type: "POST",
 	              url: 'altaPacientes',
